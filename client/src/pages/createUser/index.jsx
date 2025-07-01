@@ -38,6 +38,9 @@ function CreateUser() {
         navigate("/users")
     }
 
+    const toAllUsers =() =>{
+        navigate('/users')
+    }
     return (
         <div className="text-center flex flex-col gap-5">
             <h1>Criar Usuario</h1>
@@ -47,6 +50,7 @@ function CreateUser() {
                 <input onChange={handleEmail} className="border" type="email" placeholder="Email" required/>
 
                 <button className="cursor-pointer bg-white text-black" type="submit">Enviar</button>
+                <button onClick={toAllUsers} className="cursor-pointer bg-white text-black" type="submit">Mostrar todos</button>
             </form>
         </div>
     )

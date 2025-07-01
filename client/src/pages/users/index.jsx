@@ -71,14 +71,14 @@ function Users() {
 
       <form onSubmit={searchUser} className='flex justify-between'>
         <input onChange={handleSearchUser} type="text" placeholder='Buscar usuario'/>
-        <button className='bg-white text-black cursor-pointer' type='submit'>Buscar usuario</button>
+        <button className='bg-white text-black cursor-pointer' type='submit'>Filtar por usuario</button>
       </form>
       
       <ul className='flex flex-col gap-5'>
         {
           !resultUserSearch && data.map(user => (
             <li key={user.id} className='flex  gap-5'>
-              <p>Nome: {user.name} - Email: {user.email}</p>
+              <span className='flex gap-2.5'>Nome: <p className='text-red-400'> {user.name} </p> - Email: <p className='text-red-400'>{user.email}</p></span>
               <button onClick={() => handleRemove(user.id)} className='bg-white text-black cursor-pointer'>Remove</button>
               <button onClick={() => goToEditUser(user.id, user.name)} className='bg-white text-black cursor-pointer'>Editar</button>
             </li>
@@ -88,14 +88,15 @@ function Users() {
 
       <ul className='flex flex-col gap-5'>
         {
+          
           resultUserSearch && resultUserSearch.map(user => (
             <li key={user.id} className='flex  gap-5'>
-              <p>Nome: {user.name} - Email: {user.email}</p>
+              <span className='flex gap-2.5'>Nome: <p className='text-red-400'> {user.name} </p> Email: <p className='text-red-400'>{user.email}</p></span>
               <button onClick={() => handleRemove(user.id)} className='bg-white text-black cursor-pointer'>Remove</button>
               <button onClick={() => goToEditUser(user.id)} className='bg-white text-black cursor-pointer'>Editar</button>
             </li>
           ))
-        }
+        } 
       </ul>
 
       <button onClick={toCreateUser} className='bg-white text-black cursor-pointer'>Criar um usuario</button>

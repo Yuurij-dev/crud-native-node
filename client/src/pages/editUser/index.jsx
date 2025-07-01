@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 function EditUser() {
     const [userName, setUserName] = useState('')
     const [userEmail, setUserEmail] = useState('')
-    const {name} = useParams()
+    const {name, id} = useParams()
 
     const navigate = useNavigate()
     
