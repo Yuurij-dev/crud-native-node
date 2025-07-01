@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 function EditUser() {
     const [userName, setUserName] = useState('')
     const [userEmail, setUserEmail] = useState('')
-    const {id} = useParams()
+    const {name} = useParams()
 
     const navigate = useNavigate()
     
@@ -39,17 +39,22 @@ function EditUser() {
         navigate("/users")
     }
 
+    const handleCancel = () => {
+        navigate('/users')
+    }
+
     return (
         <div className="text-center flex flex-col gap-5">
             <h1>Editar Usuario</h1>
 
-            <p>{id}</p>
+            <p>{name}</p>
 
             <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 ">
                 <input onChange={handleUsername} className="border" type="text" placeholder="Nome" required/>
                 <input onChange={handleEmail} className="border" type="email" placeholder="Email" required/>
 
                 <button className="cursor-pointer bg-white text-black" type="submit">Enviar</button>
+                <button onClick={handleCancel} className="cursor-pointer bg-white text-black" >Cancelar</button>
             </form>
         </div>
     )

@@ -32,8 +32,8 @@ function Users() {
       })
   }
 
-  const goToEditUser = (id) => {
-    navigate(`/edit/${id}`)
+  const goToEditUser = (id, userName) => {
+    navigate(`/edit/${id}/${userName}`)
   }
 
   const toCreateUser = () => {
@@ -80,7 +80,7 @@ function Users() {
             <li key={user.id} className='flex  gap-5'>
               <p>Nome: {user.name} - Email: {user.email}</p>
               <button onClick={() => handleRemove(user.id)} className='bg-white text-black cursor-pointer'>Remove</button>
-              <button onClick={() => goToEditUser(user.id)} className='bg-white text-black cursor-pointer'>Editar</button>
+              <button onClick={() => goToEditUser(user.id, user.name)} className='bg-white text-black cursor-pointer'>Editar</button>
             </li>
           ))
         }
