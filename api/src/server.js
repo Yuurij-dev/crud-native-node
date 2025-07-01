@@ -4,9 +4,12 @@ import { Json } from './middlawares/json.js'
 import { extractQueryParams } from './utils/extract-query-params.js'
 
 const server = http.createServer(async (req, res) => {
+    
     const {method, url} = req
 
-    await Json(req, res)
+    const continueProcessing = await Json(req, res)
+
+    if(!continueProcessing) return
 
     const route = routes.find(route => {
         return route.method === method && route.path.test(url)
@@ -22,7 +25,8 @@ const server = http.createServer(async (req, res) => {
         return route.handler(req, res)
     }
 
-    res.writeHead(404).end()
+    res.writeHead(404)
+    res.end()
 })
 
 server.listen(3333)
